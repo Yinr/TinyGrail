@@ -13,15 +13,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: install CJK font
-      run: |
-        git clone --depth 1 --branch release https://github.com/adobe-fonts/source-code-pro.git ~/.fonts/adobe-fonts/source-code-pro
-        fc-cache -f -v ~/.fonts/adobe-fonts/source-code-pro
+      run: sudo apt install -y fonts-noto-cjk
     - name: echo font
       run: fc-list :lang=zh
     - name: Make PDF
       uses: docker://pandoc/latex:2.9
       with:
-        args: '--pdf-engine=xelatex -V CJKmainfont="Source Han Serif CN" -s -o xsb.pdf xsb.md'
+        args: '--pdf-engine=xelatex -V CJKmainfont="Fonts Noto CJK Serif" -s -o xsb.pdf xsb.md'
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
