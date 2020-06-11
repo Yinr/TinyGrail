@@ -1,3 +1,7 @@
+---
+mainfont: WenQuanYi Micro Hei Mono
+---
+
 # 「小圣杯」最萌大战 游戏指南 v1.0.4.66.4
 
 <div style="text-align: right"><h2><i>Nanakom&#8195;&emsp;&#8195;&emsp;</i></h2></div>
