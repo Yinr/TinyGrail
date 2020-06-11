@@ -15,7 +15,7 @@ jobs:
     - name: Make PDF
       uses: docker://pandoc/latex:2.9
       with:
-        args: '-s -o xsb.pdf xsb.md'
+        args: '--pdf-engine=xelatex -s -o xsb.pdf xsb.md'
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
