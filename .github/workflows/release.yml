@@ -12,14 +12,18 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout code
       uses: actions/checkout@v2
+    # - name: Make PDF
+      # uses: docker://pandoc/latex
+      # with:
+        # args: '--pdf-engine=xelatex -VCJKoptions=BoldFont="SimHei" -VCJKmainfont="SimSun" -s -o xsb.pdf xsb.md'
+    - name: Setup Pandoc
+      uses: r-lib/actions/setup-pandoc@v1
     - name: install CJK font
       run: sudo apt install -y fonts-noto-cjk
     - name: echo font
       run: fc-list :lang=zh
     - name: Make PDF
-      uses: docker://pandoc/latex:2.9
-      with:
-        args: '--pdf-engine=xelatex -VCJKoptions=BoldFont="SimHei" -VCJKmainfont="SimSun" -s -o xsb.pdf xsb.md'
+      run: 'pandoc --pdf-engine=xelatex -VCJKoptions=BoldFont="SimHei" -VCJKmainfont="SimSun" -s -o xsb.pdf xsb.md'
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
