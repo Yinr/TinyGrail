@@ -18,8 +18,7 @@ jobs:
       with:
         args: >-
           --pdf-engine=xelatex
-          -VCJKoptions=BoldFont="Noto Sans CJK SC"
-          -VCJKmainfont="Noto Serif CJK SC"
+          -H ./head.tex
           -s
           -o xsb.pdf
           xsb.md
